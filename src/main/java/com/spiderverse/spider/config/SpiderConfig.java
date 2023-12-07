@@ -1,5 +1,6 @@
 package com.spiderverse.spider.config;
 
+import com.spiderverse.spider.entities.SpiderLocal;
 import com.spiderverse.spider.entities.Spiderverse;
 import com.spiderverse.spider.entities.User;
 import com.spiderverse.spider.entities.Villain;
@@ -52,6 +53,16 @@ public class SpiderConfig implements CommandLineRunner {
         spider2.getVillains().add(villain1);
         spider3.getVillains().add(villain3);
         spider1.getVillains().add(villain4);
+
+        spiderRepository.saveAll(Arrays.asList(spider1, spider2, spider3));
+
+        SpiderLocal spiderLocal1 = new SpiderLocal(null, "New York", "Brooklyn", spider2);
+        SpiderLocal spiderLocal2 = new SpiderLocal(null, "New York", "Queens", spider1);
+        SpiderLocal spiderLocal3 = new SpiderLocal(null, "New York", "Queens", spider3);
+
+        spider2.setSpiderLocal(spiderLocal1);
+        spider1.setSpiderLocal(spiderLocal2);
+        spider3.setSpiderLocal(spiderLocal3);
 
         spiderRepository.saveAll(Arrays.asList(spider1, spider2, spider3));
     }

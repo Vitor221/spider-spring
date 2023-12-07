@@ -23,4 +23,26 @@ public class SpiderverseService {
         Optional<Spiderverse> spider = repository.findById(id);
         return spider.get();
     }
+
+    public Spiderverse insert(Spiderverse spider) {
+        return repository.save(spider);
+    }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    public Spiderverse update(Long id, Spiderverse spider) {
+        Spiderverse _spider = repository.getReferenceById(id);
+        updateData(_spider, spider);
+        return repository.save(_spider);
+    }
+
+    private void updateData(Spiderverse _spider, Spiderverse spider) {
+
+        _spider.setName(spider.getName());
+        _spider.setDescription(spider.getDescription());
+        _spider.setSpiderName(spider.getSpiderName());
+        
+    }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spiderverse.spider.entities.enums.VillainSituationStatus;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tb_villain")
-public class Villain {
+public class Villain implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

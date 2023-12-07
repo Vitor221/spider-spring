@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spiderverse.spider.entities.enums.SpiderSituationStatus;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;
 
 @Entity
-public class Spiderverse {
+public class Spiderverse implements Serializable {
 
     @Id
     private Long earthId;
@@ -30,6 +31,9 @@ public class Spiderverse {
     @ManyToMany
     @JoinTable(name = "tb_heroes_villains", joinColumns = @JoinColumn(name = "id_spider"), inverseJoinColumns = @JoinColumn(name = "id_villain"))
     private Set<Villain> villains = new HashSet<>();
+
+    @OneToOne(mappedBy = "spiderverse", cascade = CascadeType.ALL)
+    private SpiderLocal spiderLocal;
 
     public Spiderverse() {
     }
@@ -86,6 +90,14 @@ public class Spiderverse {
 
     public Instant getMomentCreation() {
         return momentCreation;
+    }
+
+    public SpiderLocal getSpiderLocal() {
+        return spiderLocal;
+    }
+
+    public void setSpiderLocal(SpiderLocal spiderLocal) {
+        this.spiderLocal = spiderLocal;
     }
 
     public Set<Villain> getVillains() {
