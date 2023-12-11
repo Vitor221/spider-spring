@@ -43,6 +43,6 @@ public class SpiderverseService {
         _spider.setName(spider.getName());
         _spider.setDescription(spider.getDescription());
         _spider.setSpiderName(spider.getSpiderName());
-        
+
     }
 }
