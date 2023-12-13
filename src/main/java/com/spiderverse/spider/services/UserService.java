@@ -14,6 +14,8 @@ import com.spiderverse.spider.repositories.UserRepository;
 import com.spiderverse.spider.services.exceptions.DatabaseException;
 import com.spiderverse.spider.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
 
@@ -54,7 +56,7 @@ public class UserService {
 	        updateData(_user, user);
 	        return repository.save(_user);
 	        
-    	} catch(HttpMessageNotReadableException e) {
+    	} catch(EntityNotFoundException e) {
     		throw new ResourceNotFoundException(id);
     	}
         
