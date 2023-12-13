@@ -5,9 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
 import com.spiderverse.spider.entities.User;
 import com.spiderverse.spider.repositories.UserRepository;
